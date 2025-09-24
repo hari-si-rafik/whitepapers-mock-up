@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITSEC Asia — Guidebooks</title>
+  <!-- Fonts: Heading serif pairs with clean sans for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --brand:#5e1611;          /* Deep ITSEC red */
+      --brand-d:#3d0f0a;        /* Darker red for hover */
+      --ink:#e8e8e8;            /* Body text on dark */
+      --muted:#a9a9a9;          /* Muted text */
+      --bg:#0e0e0e;             /* Page background */
+      --card:#171717;           /* Card background */
+      --border:#292929;         /* Borders */
+      --black:#000;             /* Pure black for header/footer */
+      --container:1200px;       /* Max content width */
+      --radius:12px;            /* UI radius */
+      --shadow:0 10px 24px rgba(0,0,0,.55);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";line-height:1.6}
+    h1,h2,h3{font-family:"Libre Baskerville",Georgia,serif;line-height:1.25;margin:0 0 .5rem 0}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* ====== Header ====== */
+    .header{position:fixed;inset:0 0 auto 0;background:var(--black);z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+    .header-inner{max-width:var(--container);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;color:var(--ink);letter-spacing:.3px}
+    .brand-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--brand),#000);display:inline-grid;place-items:center}
+    .brand-mark svg{width:18px;height:18px}
+
+    .nav{display:flex;gap:22px;align-items:center}
+    .nav a{padding:8px 10px;border-radius:8px;color:#f0f0f0;opacity:.9}
+    .nav a:hover{background:var(--brand);color:#fff;opacity:1}
+
+    .lang{display:flex;gap:8px;margin-left:8px}
+    .pill{border:1px solid #fff2;border-radius:999px;color:#f5f5f5;background:transparent;padding:6px 12px;font-size:12px;cursor:pointer}
+    .pill[aria-current="true"], .pill:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+
+    /* Mobile menu */
+    .hamburger{display:none;gap:6px;flex-direction:column;cursor:pointer}
+    .hamburger span{width:24px;height:2px;background:#fafafa;border-radius:2px}
+    @media (max-width:960px){
+      .nav,.lang{display:none}
+      .hamburger{display:flex}
+    }
+
+    .mobile-panel{position:fixed;top:56px;left:0;right:0;background:#0d0d0d;border-top:1px solid var(--border);display:none}
+    .mobile-panel.open{display:block}
+    .mobile-nav{max-width:var(--container);margin:auto;padding:14px 20px;display:grid;gap:10px}
+    .mobile-nav a{padding:12px;border:1px solid var(--border);border-radius:10px;background:#121212}
+    .mobile-lang{display:flex;gap:10px;padding:14px 20px;border-top:1px solid var(--border)}
+
+    /* ====== Hero ====== */
+    .hero{margin-top:64px;position:relative;background:#0a0a0a}
+    .hero-media{
+      position:relative;
+      min-height:56vh;
+      min-height:380px;
+      background:
+        radial-gradient(1000px 380px at 10% 10%, rgba(94,22,17,.45), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.85)),
+        linear-gradient(90deg, var(--brand) 0%, #000 100%);
+    }
+    .hero-inner{position:absolute;inset:0;z-index:2;max-width:var(--container);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:24px}
+    .hero-copy{max-width:680px}
+    .hero h1{font-size:clamp(1.8rem,3.6vw,3rem)}
+    .hero p{margin:12px 0 20px 0;color:#f0d6d4}
+    .cta{display:inline-block;background:var(--brand);color:#fff;padding:14px 18px;border-radius:10px;font-weight:700;box-shadow:var(--shadow)}
+    .cta:hover{background:var(--brand-d)}
+
+    /* ====== Sections ====== */
+    .section{max-width:var(--container);margin:auto;padding:56px 20px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .section .lead{color:var(--muted)}
+
+    /* ====== Cards ====== */
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.grid{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .cover{width:100%;aspect-ratio:1241/1754;position:relative;overflow:hidden;background:#0b0b0b}
+    .cover img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:grayscale(.08) contrast(1.06)}
+    .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%, rgba(0,0,0,.35) 100%)}
+    .badge{position:absolute;inset:auto 12px 12px auto;background:var(--brand);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    .card-body{padding:16px 16px 8px 16px;display:flex;flex-direction:column;gap:8px}
+    .card h3{margin:0;color:#fff;font-size:1.06rem}
+    .meta{color:var(--muted);font-size:.92rem}
+    /* keep titles compact so CTAs remain in view */
+    .card h3{margin:0;color:#fff;font-size:1.06rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .meta{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    /* responsive cover height to ensure CTAs remain visible */
+    
+    
+    .actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding:0 16px 16px 16px}
+    .btn{background:var(--brand);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .btn:hover{background:var(--brand-d)}
+    .btn.outline{background:transparent;color:var(--brand);border:1px solid var(--brand)}
+    .btn.outline:hover{background:var(--brand);color:#fff}
+
+    /* ====== Footer ====== */
+    footer{background:var(--black);color:#d8d8d8;margin-top:32px}
+    .foot{max-width:var(--container);margin:auto;padding:28px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .foot a{color:#bdbdbd}
+    .foot a:hover{color:var(--brand)}
+
+    /* Small utility */
+    .sr{position:absolute;left:-9999px}
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="./Asset/Untitled design (3).png" class="h-8 w-auto">
+            <path d="M3 12h18M12 3v18" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#latest">Services</a>
+        <a href="#library">Solutions</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="lang" aria-label="Language switcher">
+        <button class="pill" aria-current="true">EN</button>
+        <button class="pill">ID</button>
+        
+      </div>
+
+      <button id="menuBtn" aria-expanded="false" aria-controls="mobilePanel" class="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile panel -->
+    <div id="mobilePanel" class="mobile-panel" role="dialog" aria-modal="false">
+      <div class="mobile-nav">
+        <a href="#">Home</a>
+        <a href="#latest">Guidebooks</a>
+        <a href="#library">Library</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="mobile-lang">
+        <button class="pill" aria-current="true">EN</button>
+        <button class="pill">ID</button>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" role="region" aria-label="Intro">
+    <div class="hero-media">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Cybersecurity Whitepapers by ITSEC Asia</h1>
+          <p>Actionable insights to secure critical infrastructure, financial services, and the cloud. Download PDFs curated by our experts and share with your team.</p>
+          <a class="cta" href="#latest">Browse Whitepapers</a>
+        </div>
+        <div aria-hidden="true" style="flex:1"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Latest Releases ===== -->
+  <section id="latest" class="section">
+    <div class="section-head">
+      <div>
+        <h2>Latest Releases</h2>
+        <div class="lead">Fresh from our research lab — download and share with your team.</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="cover" aria-label="RDN Accounts guide cover">
+          <img src="./Asset/2025 Cyberattacks.png" alt="RDN Accounts Threat Report 2025 cover"/>
+          <span class="badge">NEW</span>
+        </div>
+        <div class="card-body">
+          <h3>2025: Cyberattacks on RDN Accounts in Indonesia</h3>
+          <div class="meta">PDF • English • 42 pages</div>
+        </div>
+        <div class="actions">
+          <button class="btn">Download PDF</button>
+          <button class="btn outline">View details</button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="cover" aria-label="Zero Trust guide cover">
+          <img src="./Asset/Cover_4.png" alt="Zero Trust for Critical Infrastructure cover"/>
+          <span class="badge">NEW</span>
+        </div>
+        <div class="card-body">
+          <h3>ITSEC BUZZ: Cybersecurity Summit 2025 Edition</h3>
+          <div class="meta">PDF • English • 36 pages</div>
+        </div>
+        <div class="actions">
+          <button class="btn">Download PDF</button>
+          <button class="btn outline">View details</button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="cover" aria-label="Cloud Security guide cover">
+          <img src="./Asset/Profiling UNC3886 and Its Cyber Espionage Threats to Indonesian Industry.png" alt="Cloud Security: Misconfigurations to Monitor cover"/>
+          <span class="badge">NEW</span>
+        </div>
+        <div class="card-body">
+          <h3>Profiling UNC3886 and Its Cyber Espionage Threats to Indonesian Industry"</h3>
+          <div class="meta">PDF • English • 28 pages</div>
+        </div>
+        <div class="actions">
+          <button class="btn">Download PDF</button>
+          <button class="btn outline">View details</button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="cover" aria-label="Incident Response guide cover">
+          <img src="./Asset/iran-israel.png" alt="Incident Response for Financial Services cover"/>
+          <span class="badge">NEW</span>
+        </div>
+        <div class="card-body">
+          <h3>Iran-Israel Cyber Conflict and Its Spillover to Indonesia</h3>
+          <div class="meta">PDF • English • 31 pages</div>
+        </div>
+        <div class="actions">
+          <button class="btn">Download PDF</button>
+          <button class="btn outline">View details</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Library ===== -->
+  <section id="library" class="section">
+    <div class="section-head">
+      <div>
+        <h2>Library</h2>
+        <div class="lead">Discover All of Our Whitepaper</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Repeatable items (examples) -->
+      <article class="card">
+        <div class="cover" aria-label="South Korea cover">
+          <img src="./Asset/profiling1.png" alt="South Korea — Threat Landscape cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 1 — Threat Landscape</h3>
+          <div class="meta">PDF • English • 24 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Japan cover">
+          <img src="./Asset/profiling1.png" alt="Japan — OT Security Checklist cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 2 — OT Security Checklist</h3>
+          <div class="meta">PDF • English • 20 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Vietnam cover">
+          <img src="./Asset/profiling1.png" alt="Vietnam — SOC Modernization cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 3 — SOC Modernization</h3>
+          <div class="meta">PDF • English • 18 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Thailand cover">
+          <img src="./Asset/profiling1.png" alt="Thailand — Identity & Access cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 4 — Identity & Access</h3>
+          <div class="meta">PDF • English • 22 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Saudi Arabia cover">
+          <img src="./Asset/profiling1.png" alt="Saudi Arabia — Cloud Compliance cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 5 — Cloud Compliance</h3>
+          <div class="meta">PDF • English • 26 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="United States cover">
+          <img src="./Asset/profiling1.png" alt="United States — Breach Casebook cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 6 — Breach Casebook</h3>
+          <div class="meta">PDF • English • 30 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="United Kingdom cover">
+          <img src="./Asset/profiling1.png" alt="United Kingdom — Ransomware Playbook cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 7 — Ransomware Playbook</h3>
+          <div class="meta">PDF • English • 32 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Australia cover">
+          <img src="./Asset/profiling1.png" alt="Australia — Incident Drills cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 8 — Incident Drills</h3>
+          <div class="meta">PDF • English • 16 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Bali cover">
+          <img src="./Asset/profiling1.png" alt="Indonesia (Bali) — SME Security cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 9 — SME Security</h3>
+          <div class="meta">PDF • English • 14 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Lombok cover">
+          <img src="./Asset/profiling1.png" alt="Indonesia (Lombok) — Phishing Trends cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 10 — Phishing Trends</h3>
+          <div class="meta">PDF • English • 12 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Malaysia cover">
+          <img src="./Asset/profiling1.png" alt="Malaysia — Banking Threats cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 11 — Banking Threats</h3>
+          <div class="meta">PDF • English • 25 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+
+      <article class="card">
+        <div class="cover" aria-label="Singapore cover">
+          <img src="./Asset/profiling1.png" alt="Singapore — Data Protection cover"/>
+        </div>
+        <div class="card-body">
+          <h3>Sample 12 — Data Protection</h3>
+          <div class="meta">PDF • English • 21 pages</div>
+        </div>
+        <div class="actions"><button class="btn">Download PDF</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer role="contentinfo">
+    <div class="foot">
+      <span>© 2025 ITSEC Asia. All rights reserved.</span>
+      <span>
+        <a href="#">Privacy</a> ·
+        <a href="#">Terms</a> ·
+        <a href="#">Contact</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
+</body>
+</html>

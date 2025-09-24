@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ITSEC Asia — Whitepaper Landing (HTML Preview)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="color-scheme" content="dark">
+  <style>
+    /* smooth scrolling for anchor links */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-950 to-black text-zinc-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2">
+        <img src="./Asset/Untitled design (3).png" alt="ITSEC Asia Logo" class="h-8 w-auto" />
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#insights" class="text-zinc-300 hover:text-white transition">Whitepapers</a>
+        <a href="#why" class="text-zinc-300 hover:text-white transition">Services</a>
+        <a href="#events" class="text-zinc-300 hover:text-white transition">Solutions</a>
+        <a href="#footer" class="text-zinc-300 hover:text-white transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero – Masthead + Two-Column -->
+  <section class="relative isolate overflow-hidden">
+    <!-- Decorative glows -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[#5e1611]/25 blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-[#5e1611]/15 blur-3xl"></div>
+    </div>
+
+    <!-- Masthead -->
+    <div class="mx-auto max-w-5xl px-4 pt-16 md:pt-24 text-center">
+      <p class="inline-flex items-center gap-2 text-[11px] uppercase tracking-wider rounded-full ring-1 ring-[#df403c]/40 bg-[#df403c]/10 px-3 py-1 text-[#df403c]">New Whitepaper · 2025</p>
+      <h1 class="mt-4 text-4xl md:text-5xl font-bold leading-tight tracking-tight">2025: Cyberattacks on RDN Accounts in Indonesia</h1>
+      <p class="mt-3 text-lg text-zinc-300 max-w-3xl mx-auto">
+        Cybersecurity strategies for securities companies — stop back‑office API exploits, KYC data theft, and dormant‑account cash‑outs with clear, prioritised controls.
+      </p>
+
+      <!-- Bullet points -->
+      <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-left max-w-3xl mx-auto">
+        <li class="flex items-start gap-3"><span class="mt-1 w-2.5 h-2.5 rounded-full bg-[#5e1611]"></span><span class="text-zinc-300">Vendor back‑office API exposure</span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 w-2.5 h-2.5 rounded-full bg-[#5e1611]"></span><span class="text-zinc-300">KYC data exfiltration</span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 w-2.5 h-2.5 rounded-full bg-[#5e1611]"></span><span class="text-zinc-300">Fraudulent authorisation</span></li>
+        <li class="flex items-start gap-3"><span class="mt-1 w-2.5 h-2.5 rounded-full bg-[#5e1611]"></span><span class="text-zinc-300">Dormant account cash‑outs</span></li>
+      </ul>
+    </div>
+
+    <!-- Two-Column: Cover + Form -->
+    <div class="mx-auto max-w-7xl px-4 py-12">
+      <div class="grid md:grid-cols-12 gap-8 items-start">
+        <!-- Cover Card -->
+        <div class="md:col-span-5">
+          <div class="relative">
+            <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-[#5e1611] to-zinc-700 opacity-30 blur-lg"></div>
+            <div class="relative rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-2xl bg-black/20">
+              <img
+                src="./Asset/2025 Cyberattacks.png"
+                alt="Whitepaper Cover Preview"
+                class="w-full h-auto object-contain"
+              />
+            </div>
+            <p class="mt-3 text-xs text-zinc-400">Executive Whitepaper · 28 pages · 15 controls</p>
+          </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="md:col-span-7">
+          <div class="relative">
+            <div class="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-[#5e1611] to-zinc-700 opacity-30 blur-lg"></div>
+            <div class="relative rounded-2xl bg-zinc-900/70 ring-1 ring-white/10 p-6 md:p-8 shadow-2xl">
+              <!-- Form -->
+              <form id="download-form" class="space-y-4">
+                <h2 class="text-xl font-semibold">Download the Whitepaper</h2>
+                <p class="text-sm text-zinc-400">Fill the form and get the PDF instantly to your inbox.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label class="block text-sm">
+                    <span class="text-zinc-300">Full name</span>
+                    <input required type="text" name="name" class="mt-1 w-full rounded-xl bg-zinc-950/50 ring-1 ring-white/10 px-3 py-2 focus:outline-none focus:ring-[#5e1611]" />
+                  </label>
+                  <label class="block text-sm">
+                    <span class="text-zinc-300">Work email</span>
+                    <input required type="email" name="email" class="mt-1 w-full rounded-xl bg-zinc-950/50 ring-1 ring-white/10 px-3 py-2 focus:outline-none focus:ring-[#5e1611]" />
+                  </label>
+                  <label class="block text-sm">
+                    <span class="text-zinc-300">Company Name</span>
+                    <input type="text" name="company" class="mt-1 w-full rounded-xl bg-zinc-950/50 ring-1 ring-white/10 px-3 py-2 focus:outline-none focus:ring-[#5e1611]" />
+                  </label>
+                  <label class="block text-sm">
+                    <span class="text-zinc-300">Job title</span>
+                    <input type="text" name="title" class="mt-1 w-full rounded-xl bg-zinc-950/50 ring-1 ring-white/10 px-3 py-2 focus:outline-none focus:ring-[#5e1611]" />
+                  </label>
+                  <label class="block text-sm sm:col-span-2">
+                    <span class="text-zinc-300">Country</span>
+                    <select name="country" class="mt-1 w-full rounded-xl bg-zinc-950/50 ring-1 ring-white/10 px-3 py-2 focus:outline-none focus:ring-[#5e1611]">
+                      <option>Indonesia</option>
+                      <option>Malaysia</option>
+                      <option>Singapore</option>
+                      <option>Thailand</option>
+                      <option>Philippines</option>
+                      <option>Vietnam</option>
+                      <option>Other</option>
+                    </select>
+                  </label>
+                </div>
+
+                <label class="flex items-start gap-3 text-sm">
+                  <input required type="checkbox" class="mt-1" />
+                  <span class="text-zinc-300">I agree to receive security insights and product updates from ITSEC Asia.</span>
+                </label>
+
+                <button type="submit" class="w-full rounded-xl bg-[#5e1611] text-zinc-100 font-semibold py-3 hover:bg-[#76201b]">Send me the PDF</button>
+
+                <p class="text-[11px] leading-relaxed text-zinc-500">
+                  By submitting this form you agree to our <a class="underline" href="#">Privacy Policy</a> and consent to be contacted about our services.
+                </p>
+              </form>
+
+              <!-- Thank You (hidden by default) -->
+              <div id="thankyou" class="hidden text-center">
+                <div class="mx-auto w-16 h-16 rounded-2xl bg-[#5e1611]/10 ring-1 ring-[#5e1611]/30 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3 class="mt-4 text-2xl font-semibold">Check your inbox ✉️</h3>
+                <p class="mt-2 text-zinc-400">Your download link is on the way. If you don’t see it in a few minutes, check your spam folder.</p>
+                <a href="#" class="inline-block mt-6 px-5 py-3 rounded-xl bg-white text-zinc-900 font-semibold hover:bg-zinc-100">Return to Home</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why box -->
+          <div class="mt-6 rounded-2xl bg-zinc-900/40 ring-1 ring-white/10 p-6">
+            <h2 class="text-lg font-semibold text-white">Why this matters</h2>
+            <p class="mt-2 text-sm text-zinc-300">Market integrity depends on robust API governance and identity assurance across broker–clearing integrations. This paper outlines pragmatic steps aligned with OJK/BSSN guidance to reduce risk in 30–60 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional footer placeholder -->
+  <footer id="footer" class="mt-16 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-[#5e1611]/10 ring-1 ring-[#5e1611]/40 flex items-center justify-center">
+            <span class="text-[#5e1611] font-bold">IT</span>
+          </div>
+          <p class="font-semibold">ITSEC Asia</p>
+        </div>
+        <p class="mt-3 text-sm text-zinc-400 max-w-sm">
+          Enterprise‑grade cybersecurity services and products for Southeast Asia’s most critical systems.
+        </p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-wider text-zinc-500">Indonesia</p>
+        <p class="text-sm text-zinc-300">Noble House, Level 11<br/>Jakarta 12950, Indonesia</p>
+        <p class="mt-4 text-xs uppercase tracking-wider text-zinc-500">Singapore</p>
+        <p class="text-sm text-zinc-300">112 Robinson Road, #11-04<br/>Singapore 068902</p>
+      </div>
+      <div>
+        <p class="text-xs uppercase tracking-wider text-zinc-500">Australia</p>
+        <p class="text-sm text-zinc-300">Level 22, 120 Spencer St<br/>Melbourne Victoria 3004</p>
+        <p class="mt-4 text-xs uppercase tracking-wider text-zinc-500">United Arab Emirates</p>
+        <p class="text-sm text-zinc-300">Golden Mile 4, Office 13, Floor M,<br/>Palm Jumeirah, Dubai, United Arab Emirates</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal JS to swap form -> thank you
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('download-form');
+      var ty = document.getElementById('thankyou');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          form.classList.add('hidden');
+          if (ty) ty.classList.remove('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
